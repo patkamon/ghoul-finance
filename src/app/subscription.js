@@ -29,7 +29,7 @@ export default function Subscription() {
         </div>
         <img
           src="dropdown.png"
-          className="w-10 h-10 mx-auto z-0 -my-2 hover:translate-y-1"
+          className="w-10 h-10 mx-auto z-0 -my-2 animate-bounce hover:cursor-pointer"
         ></img>
       </div>
 
@@ -50,7 +50,7 @@ export default function Subscription() {
         </div>
         <img
           src="dropdown.png"
-          className="w-10 h-10 mx-auto z-0 -my-2 hover:translate-y-1"
+          className="w-10 h-10 mx-auto z-0 -my-2 animate-bounce hover:cursor-pointer"
         ></img>
       </div>
 
@@ -71,7 +71,7 @@ export default function Subscription() {
         </div>
         <img
           src="dropdown.png"
-          className="w-10 h-10 mx-auto z-0 -my-2 hover:translate-y-1"
+          className="w-10 h-10 mx-auto z-0 -my-2 animate-bounce hover:cursor-pointer"
         ></img>
       </div>
     </div>
