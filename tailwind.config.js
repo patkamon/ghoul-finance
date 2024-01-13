@@ -9,6 +9,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      purple1: "#503466",
+      purple2: "#E4CCFF",
+      green: "#92EF71",
+      white: "#FFF",
+    },
+    textColor: {
+      primary: "#000",
+      white: "#FFF",
+      black: "#000",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

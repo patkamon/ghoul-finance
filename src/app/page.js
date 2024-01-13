@@ -2,6 +2,7 @@
 
 import { ethers } from "ethers";
 import poolContract from "@aave/core-v3/artifacts/contracts/interfaces/IPool.sol/IPool.json";
+import Navbar from "./navbar";
 
 export default function Home() {
   const usdcAddress = "0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8"; // mainnet usdc
@@ -72,35 +73,43 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="text-yellow-400">Ghoul</div>
-      <div ckassName="">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={(e) => {
-            supply(e);
-          }}
-        >
-          Supply
-        </button>
+    <main className="bg-purple2 flex min-h-screen flex-col items-center ">
+      <Navbar />
 
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={(e) => {
-            withdraw(e);
-          }}
-        >
-          Withdraw
-        </button>
+      <div className="bg-purple1 py-24  w-full"></div>
+      <div className="bg-white py-16  w-3/5 relative -my-32 grid grid-cols-3 gap-4 rounded-xl">
+        <div className="m-auto">Profile</div>
 
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={(e) => {
-            borrow(e);
-          }}
-        >
-          Borrow
-        </button>
+        <div className="  flex flex-col space-y-4 col-span-2 justify-center">
+          <div className="m-auto">STAKED: 102 BORROW: 40</div>
+          <div className="m-auto">BAR</div>
+          <div className="z-0 flex gap-4 justify-center">
+            <button
+              className="bg-purple2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+              onClick={(e) => {
+                supply(e);
+              }}
+            >
+              Supply
+            </button>
+            <button
+              className="bg-purple2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+              onClick={(e) => {
+                withdraw(e);
+              }}
+            >
+              Withdraw
+            </button>
+            <button
+              className="bg-purple2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+              onClick={(e) => {
+                borrow(e);
+              }}
+            >
+              Borrow
+            </button>
+          </div>
+        </div>
       </div>
     </main>
   );
