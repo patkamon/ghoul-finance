@@ -3,6 +3,7 @@
 import { ethers } from "ethers";
 import poolContract from "@aave/core-v3/artifacts/contracts/interfaces/IPool.sol/IPool.json";
 import Navbar from "./navbar";
+import Downpbar from "./downbar";
 
 export default function Home() {
   const usdcAddress = "0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8"; // mainnet usdc
@@ -216,6 +217,7 @@ export default function Home() {
           </div>
         </div>{" "}
       </div>
+      <Downpbar />
     </main>
   );
 }
