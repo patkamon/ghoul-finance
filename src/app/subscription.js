@@ -1,4 +1,10 @@
+import { useState } from "react";
+import Transaction from "./transaction";
+
 export default function Subscription() {
+  const [click, setClick] = useState(false);
+  const [blur, setBlur] = useState(false);
+
   return (
     <div className="bg-white w-3/5 flex pb-6 flex-col rounded-xl ">
       <div className="grid grid-cols-3">
@@ -29,8 +35,16 @@ export default function Subscription() {
         </div>
         <img
           src="dropdown.png"
-          className="w-10 h-10 mx-auto z-0 -my-2 animate-bounce hover:cursor-pointer"
+          className={`w-10 h-10 mx-auto z-0 -my-2 hover:cursor-pointer ${
+            click ? "rotate-180" : "animate-bounce"
+          } `}
+          onClick={() => setClick(!click)}
         ></img>
+        <div className={click ? "" : "hidden"}>
+          <Transaction />
+          <Transaction />
+          <Transaction />
+        </div>
       </div>
 
       <div className="border mx-16 rounded-xl flex flex-col mb-4 ">

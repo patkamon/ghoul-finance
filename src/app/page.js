@@ -83,7 +83,7 @@ export default function Home() {
 
       <Backdrop />
 
-      <div className="z-0 w-full flex flex-col top-24 items-center gap-5 mt-20">
+      <div className="z-0 w-full flex flex-col top-24 items-center gap-5 mt-20 ">
         <Profile />
         <Menu />
         <Subscription />
