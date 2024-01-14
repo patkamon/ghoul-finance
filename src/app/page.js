@@ -8,6 +8,8 @@ import Backdrop from "./backdrop";
 import Profile from "./profile";
 import Menu from "./menu";
 import Subscription from "./subscription";
+import { useState } from "react";
+import Form from "./form";
 
 export default function Home() {
   const usdcAddress = "0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8"; // mainnet usdc
@@ -15,6 +17,9 @@ export default function Home() {
   const referralCode = "0";
   const userAddress = "0xF0A94EC0F27203C399e17d5533A77e00F9813450";
   const poolAddress = "0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951"; // mainnet address, for other addresses: https://docs.aave.com/developers/developing-on-aave/deployed-contract-instances
+
+  const [overlay, setOverlay] = useState(false);
+  const [slide, setSlide] = useState("");
 
   async function requestAccount() {
     await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -77,16 +82,34 @@ export default function Home() {
     }
   }
 
+  function blur(val) {
+    setOverlay(val);
+    if (val) {
+      setSlide("translate-y-full");
+      setTimeout(() => {
+        setSlide("");
+      }, 50);
+    }
+  }
+
   return (
-    <main className="bg-purple2 flex min-h-screen flex-col items-center overflow-hidden">
+    <main
+      className={`bg-purple2 flex min-h-screen flex-col items-center overflow-hidden `}
+    >
       <Navbar />
 
       <Backdrop />
 
-      <div className="z-0 w-full flex flex-col top-24 items-center gap-5 mt-20 ">
+      {overlay ? <Form setBlur={blur} blur={slide}></Form> : <></>}
+
+      <div
+        className={`z-0 w-full flex flex-col top-24 items-center gap-5 mt-20 ${
+          overlay ? "blur-sm" : ""
+        }`}
+      >
         <Profile />
         <Menu />
-        <Subscription />
+        <Subscription setBlur={blur} />
       </div>
       <Downpbar />
     </main>

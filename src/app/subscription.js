@@ -1,15 +1,19 @@
 import { useState } from "react";
 import Transaction from "./transaction";
 
-export default function Subscription() {
+export default function Subscription(props) {
   const [click, setClick] = useState(false);
-  const [blur, setBlur] = useState(false);
 
   return (
-    <div className="bg-white w-3/5 flex pb-6 flex-col rounded-xl ">
+    <div className="bg-white w-3/5 flex pb-6 flex-col rounded-xl">
       <div className="grid grid-cols-3">
         <div className="col-start-3 flex gap-2 justify-center py-4">
-          <button className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold px-8 rounded-xl text-xl border-2 border-[#000]">
+          <button
+            onClick={() => {
+              props.setBlur(true);
+            }}
+            className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold px-8 rounded-xl text-xl border-2 border-[#000]"
+          >
             +
           </button>
           <button className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold px-8 rounded-xl text-xl border-2 border-[#000]">
