@@ -7,11 +7,13 @@ export default function Form(props) {
       <img src="ghoul.png" className="w-32 h-32"></img>
       <button
         onClick={() => props.setBlur(false)}
-        className="bg-[#D9D9D9] rounded-lg"
+        className="bg-[#D9D9D9] rounded-lg border hover:bg-blue"
       >
         Cancel
       </button>
-      <button className="bg-green rounded-lg">Submit</button>
+      <button className="bg-green border rounded-lg hover:bg-blue">
+        Submit
+      </button>
     </div>
   );
 }

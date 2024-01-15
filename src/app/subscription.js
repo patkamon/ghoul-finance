@@ -12,11 +12,11 @@ export default function Subscription(props) {
             onClick={() => {
               props.setBlur(true);
             }}
-            className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold px-8 rounded-xl text-xl border-2 border-[#000]"
+            className="bg-purple2 text-[#897E7E] font-bold px-8 rounded-xl text-xl hover:bg-blue"
           >
             +
           </button>
-          <button className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold px-8 rounded-xl text-xl border-2 border-[#000]">
+          <button className="bg-purple2 text-[#897E7E] font-bold px-8 rounded-xl text-xl hover:bg-blue">
             -
           </button>
         </div>
@@ -37,13 +37,16 @@ export default function Subscription(props) {
             </div>
           </div>
         </div>
-        <img
-          src="dropdown.png"
-          className={`w-10 h-10 mx-auto z-0 -my-2 hover:cursor-pointer ${
-            click ? "rotate-180" : "animate-bounce"
-          } `}
-          onClick={() => setClick(!click)}
-        ></img>
+        <div className="animate-bounce">
+          <img
+            src="dropdown.png"
+            className={`w-10 h-10 mx-auto z-0 -my-2 hover:cursor-pointer ${
+              click ? "rotate-180" : "animate-bounce"
+            } `}
+            onClick={() => setClick(!click)}
+          ></img>
+        </div>
+
         <div className={click ? "" : "hidden"}>
           <Transaction />
           <Transaction />

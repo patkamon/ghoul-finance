@@ -14,6 +14,7 @@ module.exports = {
       purple2: "#E4CCFF",
       green: "#92EF71",
       white: "#FFF",
+      blue: "#B9E6D1",
     },
     textColor: {
       primary: "#000",

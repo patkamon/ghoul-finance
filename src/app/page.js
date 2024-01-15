@@ -85,7 +85,7 @@ export default function Home() {
   function blur(val) {
     setOverlay(val);
     if (val) {
-      setSlide("translate-y-full");
+      setSlide("-translate-y-full");
       setTimeout(() => {
         setSlide("");
       }, 50);
