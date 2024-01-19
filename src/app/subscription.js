@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Transaction from "./transaction";
+import Pay from "./pay";
 
 export default function Subscription(props) {
   const [click, setClick] = useState(false);
@@ -51,6 +52,7 @@ export default function Subscription(props) {
           <Transaction />
           <Transaction />
           <Transaction />
+          <Pay />
         </div>
       </div>
 

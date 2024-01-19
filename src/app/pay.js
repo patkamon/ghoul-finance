@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import poolContract from "@aave/core-v3/artifacts/contracts/interfaces/IPool.sol/IPool.json";
 
-export default function Profile() {
+export default function Pay() {
   const usdcAddress = "0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8"; // mainnet usdc
   const ghoAddress = "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60";
   const referralCode = "0";
@@ -31,7 +31,7 @@ export default function Profile() {
     }
   }
 
-  async function withdraw(e) {
+  async function withdraw(e, amount) {
     e.preventDefault();
     if (typeof window.ethereum !== "undefined") {
       await requestAccount();
@@ -43,7 +43,7 @@ export default function Profile() {
         signer
       );
       try {
-        contract.withdraw(usdcAddress, "10000000", userAddress);
+        contract.withdraw(usdcAddress, amount, userAddress);
       } catch (err) {
         console.log("Error: ", err);
       }
@@ -69,59 +69,49 @@ export default function Profile() {
     }
   }
 
+  async function repayDebt(e, amount) {
+    e.preventDefault();
+    if (typeof window.ethereum !== "undefined") {
+      await requestAccount();
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        poolAddress,
+        poolContract.abi,
+        signer
+      );
+      try {
+        contract.repay(ghoAddress, amount, "2", userAddress);
+      } catch (err) {
+        console.log("Error: ", err);
+      }
+    }
+  }
 
+  async function repay(e) {
+    e.preventDefault();
+    // 1. find interest from starting money
+    let amount = 0;
+    // 2. withdraw that
+    withdraw(e, amount);
+    // 3. swap to target asset
+    // swap()
+    // 3. repay using that
+    repayDebt(e, amount);
+    // borrow
+    borrow(e);
+    // send
+    send();
+  }
 
   return (
-    <div className="bg-white py-8  w-3/5  grid grid-cols-3 gap-4 rounded-xl">
-      <div className="mx-auto w-full flex flex-col ml-10 -mb-4">
-        <img src="ghoul.png" className="mx-auto -mt-8"></img>
-        <div className="mx-auto -mt-4 font-medium">TIER: 1</div>
-        <button className="bg-purple1 rounded-xl w-1/2 mx-auto text-white text-xl hover:bg-blue hover:text-black">
-          UPGRADE
-        </button>
-      </div>
-
-      <div className="flex flex-col space-y-4 col-span-2 justify-center">
-        <div className="mx-auto text-2xl font-medium">
-          STAKED: 102 BORROW: 40
-        </div>
-        <div
-          id="myProgress"
-          className="w-3/4 m-auto rounded-lg  flex bg-[#D9D9D9]"
-        >
-          <div
-            id="myBar"
-            className="bg-green h-8 w-[61%] rounded-lg animate-pulse"
-          ></div>
-          <div className="ml-auto mr-2 mt-1 animate-pulse">61%</div>
-        </div>
-        <div className="z-0 flex gap-4 justify-center">
-          <button
-            className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold py-2 px-4 rounded-xl hover:bg-blue  "
-            onClick={(e) => {
-              supply(e);
-            }}
-          >
-            Supply
-          </button>
-          <button
-            className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold py-2 px-4 rounded-xl hover:bg-blue"
-            onClick={(e) => {
-              withdraw(e);
-            }}
-          >
-            Withdraw
-          </button>
-          <button
-            className="bg-purple2 hover:bg-blue-700 text-[#897E7E] font-bold py-2 px-4 rounded-xl hover:bg-blue"
-            onClick={(e) => {
-              borrow(e);
-            }}
-          >
-            Borrow
-          </button>
-        </div>
-      </div>
+    <div className="flex">
+      <button
+        className="m-auto bg-green px-8 rounded py-2 mb-2 hover:bg-blue"
+        onClick={(e) => repay(e)}
+      >
+        REPAY
+      </button>
     </div>
   );
 }
