@@ -25,7 +25,7 @@ export default function Subscription(props) {
 
       <div className="border mx-16 rounded-xl flex flex-col mb-4">
         <div className="grid grid-cols-3 align-middle">
-          <img src="ghoul.png" className=" w-40 h-40  mx-auto"></img>
+          <img src="netflix.png" className=" w-40 h-40 pt-4 mx-auto"></img>
           <div className="col-span-2  grid grid-cols-3 ">
             <div className="m-auto text-center">
               NETFLIX<br></br>15$/month
@@ -58,10 +58,10 @@ export default function Subscription(props) {
 
       <div className="border mx-16 rounded-xl flex flex-col mb-4 ">
         <div className="grid grid-cols-3 align-middle">
-          <img src="ghoul.png" className=" w-40 h-40  mx-auto"></img>
+          <img src="youtube.webp" className="pt-4 w-40 h-40  mx-auto"></img>
           <div className="col-span-2  grid grid-cols-3 ">
             <div className="m-auto text-center">
-              NETFLIX<br></br>15$/month
+              Youtube Premium<br></br>10$/month
             </div>
             <div className="m-auto text-center">
               LATEST PAYMENT<br></br>1/1/2024
@@ -79,10 +79,10 @@ export default function Subscription(props) {
 
       <div className="border mx-16 rounded-xl flex flex-col mb-4 ">
         <div className="grid grid-cols-3 align-middle">
-          <img src="ghoul.png" className=" w-40 h-40  mx-auto"></img>
+          <img src="superfluid.png" className="pt-4 w-40 h-40  mx-auto"></img>
           <div className="col-span-2  grid grid-cols-3 ">
             <div className="m-auto text-center">
-              NETFLIX<br></br>15$/month
+              Superfluid<br></br>10$/month
             </div>
             <div className="m-auto text-center">
               LATEST PAYMENT<br></br>1/1/2024

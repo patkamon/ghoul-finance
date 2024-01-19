@@ -12,25 +12,6 @@ export default function Pay() {
     await window.ethereum.request({ method: "eth_requestAccounts" });
   }
 
-  async function supply(e) {
-    e.preventDefault();
-    if (typeof window.ethereum !== "undefined") {
-      await requestAccount();
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(
-        poolAddress,
-        poolContract.abi,
-        signer
-      );
-      try {
-        contract.supply(usdcAddress, "10000000", userAddress, referralCode);
-      } catch (err) {
-        console.log("Error: ", err);
-      }
-    }
-  }
-
   async function withdraw(e, amount) {
     e.preventDefault();
     if (typeof window.ethereum !== "undefined") {
@@ -50,7 +31,7 @@ export default function Pay() {
     }
   }
 
-  async function borrow(e) {
+  async function borrow(e, amount) {
     e.preventDefault();
     if (typeof window.ethereum !== "undefined") {
       await requestAccount();
@@ -62,7 +43,7 @@ export default function Pay() {
         signer
       );
       try {
-        contract.borrow(ghoAddress, "10000000000000000", "2", "0", userAddress);
+        contract.borrow(ghoAddress, amount, "2", "0", userAddress);
       } catch (err) {
         console.log("Error: ", err);
       }
@@ -99,7 +80,7 @@ export default function Pay() {
     // 3. repay using that
     repayDebt(e, amount);
     // borrow
-    borrow(e);
+    borrow(e, amount);
     // send
     send();
   }
